@@ -1,0 +1,168 @@
+/*
+Details
+Headlines: Lora (Google Fonts)
+Body: Helvetica, Arial, sans-serif 
+Body-Color: #333
+Lines: #d0d0d0
+Navigation-Links (normal/visited): #666, no underline
+Navigation-Links (active): #DEB887
+Navigation-Links (hover): #00ddff
+Title-Link: same as the rest of the text #333
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url();
+
+:root {
+    /* ====== Colors ====== */
+    --light_lines: #d0d0d0;
+    --light: #d0d0d0;
+    --medium: #666;
+    --dark: #333;
+    --tan: #DEB887;
+    --blue: #00ddff;
+}
+
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--dark);
+}
+
+/* ====== h1, h2 and Li ====== */
+:is(h1, h2, li) :where(a:link, a:visited, a:hover, a:active, a:focus) {
+    text-decoration: none;
+    font-family: 'Lora', serif;
+}
+
+h1 :is(a:link, a:visited, a:hover, a:active, a:focus) {
+    color: var(--dark);
+}
+
+h2 :is(a:link, a:visited, a:hover, a:active, a:focus) {
+    color: var(--medium);
+}
+
+li :is(a:link, a:visited) {
+    color: var(--medium);  
+}
+
+li :is(a:hover){
+    color: var(--blue);
+}
+
+li :is(a:active, a:focus){
+    color: var(--tan);
+}
+
+/* ====== Link in <p> tag ====== */
+:is(p) :where(a:link, a:visited, a:active, a:focus){
+    color: var(--medium);
+    text-decoration: none;
+}
+
+:is(p) :where(a:hover){
+    color: var(--blue);
+}
+
+/* ====== Small ====== */
+@media screen and (min-width: 18.75em) {
+    img {
+        width: 12.5em;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    h1 :is(a:link, a:visited, a:hover, a:active, a:focus) {
+        font-size: 2em;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    body > div {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        margin: 1em;
+    }
+
+    figure {
+        padding: 15px 0 15px 0;
+    }
+
+    li :is(a:link, a:visited, a:hover, a:active, a:focus) {
+        font-size: 1.35em;  
+    }
+
+    ul {
+        list-style: none;
+        border-style: solid;
+        border-color: var(--light_lines);
+        border-width: 1px 0 1px 0; 
+        /* top, right, bottom and left */
+    }
+
+    li {
+        padding: 8px;
+    }
+
+    .post-date {
+        text-align: right;
+        font-size: 1.35em;
+    }
+
+    :is(.post-content, .post-date) {
+        padding-top: 40px;
+        padding-bottom: 10px;
+        border-style: solid;
+        border-color: var(--light_lines);
+        border-width: 0 0 1px 0; 
+        /* top, right, bottom and left */
+    } 
+
+    header {
+        text-align: center;
+    }
+}
+
+/* ====== Medium ====== */
+@media screen and (min-width: 46.875em){
+
+    nav {
+        font-size: 1.3em; 
+    }
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .post-date {
+        text-align: right;
+        font-size: 1.4em;
+        grid-column: 1;
+        border-style: solid;
+        border-color: var(--light_lines);
+        border-width: 0 1px 0 0;
+        padding-right: 20px; 
+        /* top, right, bottom and left */
+    }
+
+    .post-content {
+        grid-column: 2;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    article {
+        display: grid;
+        grid-template-columns: 25% auto ;
+    }
+}

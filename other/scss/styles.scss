@@ -1,0 +1,85 @@
+//colors
+$body-background-color: darkred;
+$form-background-color: white;
+$input-color: white;
+$headlines-color : white;
+$lrg-background-clr: red;
+$md-background-clr: cyan;
+$sm-background-clr: green;
+$mw-background-clr: yellow;
+        
+
+//set breakpoint sizes
+$break-small: 20em;
+$break-medium: 31em;
+$break-large: 60em;
+$max-width: 480px;
+
+body {
+background: $body-background-color;
+@include breakpoint(large) { background: $lrg-background-clr; }
+@include breakpoint(medium) { background: $md-background-clr; }
+@include breakpoint(small) { background: $sm-background-clr; }
+@include breakpoint(max-width) { background: $mw-background-clr; }
+}
+
+#contactform {
+    background-color: $form-background-color;
+    input, textarea {
+        background-color: $input-color;
+        flex: 2;
+    }
+    @media (min-width: $break-small) {
+       & {
+          width: 90%;
+          max-width: 700px;
+          margin-left: auto;
+          margin-right: auto; 
+        } 
+    }
+}
+
+fieldset > div {
+    @include flex-container(row, wrap);        
+} 
+
+/*
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+}*/
+
+@mixin flex-container() {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
+@mixin center {
+  width: 90%;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#content {
+    @include center;
+}
+
+
+@mixin breakpoint($break) {
+@if $break == large {
+@media (max-width: $break-large) { @content; }
+}
+@else if $break == medium {
+@media (max-width: $break-medium) { @content; }
+}
+@else if $break == small {
+@media (max-width: $break-small) { @content; }
+} @else {
+@media ($break) { @content; }
+}
+}

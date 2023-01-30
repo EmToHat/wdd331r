@@ -1,0 +1,118 @@
+@import "_resets.scss";
+@import "_variables.scss";
+
+
+// compute values and return values
+@function weight($weight-name) {
+    @return map-get($font-weights, $weight-name);
+}
+
+// style
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+@mixin flexCenter2($direction) {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: $direction;
+}
+
+@mixin theme($light-theme: true){
+    @if $light-theme {
+        background:lighten($primary-color, 100%);
+        color: darken($text-color, 100%);
+    }
+}
+
+//media query
+@mixin mobile {
+    @media (max-width: $mobile) {
+        @content;
+    }
+}
+
+
+// SASS Comments
+/* CSS Comments*/
+
+// NOTES
+// SASS is a CSS extension language
+
+/* SCSS SYNTAX
+@ mixin button-base(){
+    @include typography(button);
+    display: inline-flex;
+    position: relative;
+    height: $button-height;
+    border: none;
+    vertical-align: middle;
+    $:hover { cursor:pointer; }
+}
+*/
+
+/* Normal CSS */
+:root {
+    --primary-color: #272727;
+    --accent-color: #ff652f;
+    --text-color: #fff;
+}
+
+body {
+    background: var(--primary-color);
+}
+
+/* SCSS 
+$primary-color: #272727;
+$accent-color: #ff652f;
+$text-color: #fff;
+$font-weights: (
+    "regular": 400,
+    "medium": 500,
+    "bold": 700
+); */
+
+body {
+    background: $primary-color;
+    color: $text-color;
+    font-weight: map-get($font-weights, bold);
+}
+
+
+// NESTING 
+.main {
+    @include flexCenter(column);
+    width: 80%;
+    margin: 0 auto;
+    
+    p {
+        font-weight: weight(regular);
+    }
+    
+    @include mobile {
+        // media query
+        flex-direction: column;
+    }
+    
+    /*
+    .main__paragraph {
+        font-weight: map-get($font-weights, bold);
+    } 
+    #{&}__paragraph {
+        font-weight: map-get($font-weights, bold);
+        
+        &:hover {
+            color: pink;
+    
+        }
+    }
+    */
+}
+
+
+.light {
+    @include theme($light-theme: true);
+}
